@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="849.0" stylesheets="/estilos/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.reservasaulas.mvc.vista.grafica.controladores.ControladorVPrincipal">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Archivo">
+            <items>
+              <MenuItem fx:id="miSalir" mnemonicParsing="false" onAction="#acSalir" text="Salir" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Ayuda">
+            <items>
+              <MenuItem fx:id="miAyuda" mnemonicParsing="false" onAction="#acAcercaDe" text="Acerca de...." />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane fx:id="vPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="848.0" stylesheets="/estilos/style.css" tabClosingPolicy="UNAVAILABLE" tabMinHeight="30.0" tabMinWidth="70.0">
+         <tabs>
+            <Tab fx:id="pesProfesores" text="Profesores">
+               <content>
+                  <AnchorPane fx:id="vProfesores" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutY="10.0" prefHeight="500.0" prefWidth="762.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <children>
+                              <TableView fx:id="tabProfesores" cache="true" prefHeight="388.0" prefWidth="819.0">
+                                 <columns>
+                                    <TableColumn fx:id="colNombreProf" prefWidth="210.5" text="Nombre" />
+                                    <TableColumn fx:id="colTelfProf" minWidth="0.0" prefWidth="178.5" text="Teléfono" />
+                                    <TableColumn fx:id="colMailProf" prefWidth="229.0" text="E-Mail" />
+                                    <TableColumn fx:id="colPuntosProf" prefWidth="219.0" text="Puntos" />
+                                 </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                       <items>
+                                          <MenuItem fx:id="menuBorrarProfesor" mnemonicParsing="false" onAction="#acBorrarProfesor" text="Borrar Profesor" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                              <HBox alignment="CENTER_LEFT" prefHeight="104.0" prefWidth="762.0">
+                                 <children>
+                                    <Button fx:id="btAbrirAnadirProfesor" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#acAbrirAnadirProf" prefHeight="40.0" prefWidth="160.0" text="Añadir Profesor">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="50.0" />
+                                       </HBox.margin>
+                                       <graphic>
+                                          <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../imagenes/añadir.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btAbrirBuscarProfesor" mnemonicParsing="false" onAction="#acAbrirBuscarProf" prefHeight="40.0" prefWidth="160.0" text="Buscar Profesor">
+                                       <graphic>
+                                          <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../imagenes/buscar.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="pesAulas" text="Aulas">
+               <content>
+                  <AnchorPane fx:id="vAulas" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="162.0" prefHeight="500.0" prefWidth="762.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <children>
+                              <TableView fx:id="tabAulas" prefHeight="388.0" prefWidth="702.0">
+                                 <columns>
+                                    <TableColumn fx:id="colNombreAula" prefWidth="382.0" text="Nombre" />
+                                    <TableColumn fx:id="colPuestosAula" prefWidth="455.0" text="Puestos" />
+                                 </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                       <items>
+                                          <MenuItem fx:id="menuBorrarAula" mnemonicParsing="false" onAction="#acBorrarAula" text="Borrar Aula" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                              <HBox alignment="CENTER_LEFT" prefHeight="104.0" prefWidth="766.0">
+                                 <children>
+                                    <Button fx:id="btAbrirAnadirAula" mnemonicParsing="false" onAction="#acAbrirAnadirAula" prefHeight="40.0" prefWidth="160.0" text="Añadir Aula">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="50.0" />
+                                       </HBox.margin>
+                                       <graphic>
+                                          <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../imagenes/añadir.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btAbrirBuscarAula" mnemonicParsing="false" onAction="#acAbrirBuscarAula" prefHeight="40.0" prefWidth="160.0" text="Buscar Aula">
+                                       <graphic>
+                                          <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../imagenes/buscar.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="pesReservas" text="Reservas">
+               <content>
+                  <AnchorPane fx:id="vReservas" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="500.0" prefWidth="762.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <children>
+                              <TableView fx:id="tabReservas" cache="true" prefHeight="388.0" prefWidth="702.0">
+                                 <columns>
+                                    <TableColumn fx:id="colProfReservas" prefWidth="210.5" text="Profesor" />
+                                    <TableColumn fx:id="colAulaReservas" minWidth="0.0" prefWidth="178.5" text="Aula" />
+                                    <TableColumn fx:id="colPermReservas" prefWidth="217.5" text="Permanencia" />
+                                    <TableColumn fx:id="colPuntosReservas" prefWidth="230.5" text="Puntos" />
+                                 </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                       <items>
+                                          <MenuItem fx:id="menuBorrarReserva" mnemonicParsing="false" onAction="#acBorrarReserva" text="Borrar Reserva" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                              <HBox alignment="CENTER_LEFT" prefHeight="104.0" prefWidth="766.0">
+                                 <children>
+                                    <Button fx:id="btAbrirAnadirReserva" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#acAbrirAnadirReserva" prefHeight="40.0" prefWidth="160.0" text="Añadir Reserva">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="50.0" />
+                                       </HBox.margin>
+                                       <graphic>
+                                          <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../imagenes/añadir.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btAbrirBuscarReserva" mnemonicParsing="false" onAction="#acAbrirBuscarReserva" prefHeight="40.0" prefWidth="160.0" text="Buscar Reserva">
+                                       <graphic>
+                                          <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../imagenes/buscar.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</VBox>

@@ -1,29 +1,38 @@
 package org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio;
 
-import java.time.LocalDate;
+import java.time.LocalDate; 
 import java.util.Objects;
 
 public class PermanenciaPorTramo extends Permanencia {
+
+	// DECLARACIÓN DE VARIABLES Y CONSTANTES.
 	private static final int PUNTOS = 10;
 	private Tramo tramo;
 
-//	Constructor usando super para utilizar el constructor del padre para el día
+	// CONSTRUCTOR CON PARAMETROS
 	public PermanenciaPorTramo(LocalDate dia, Tramo tramo) {
 		super(dia);
 		setTramo(tramo);
 	}
 
-//	Constructor copia usando super para utilizar el constructor copia del padre para el día (que además valida el null de p)
+	// CONSTRUCTOR COPIA
 	public PermanenciaPorTramo(PermanenciaPorTramo p) {
 		super(p);
 		setTramo(p.getTramo());
 	}
 
-//	Getters y setters
+	// GENERAMOS GETTER Y SETTER DE TRAMO
+
+	/**
+	 * @return the tramo
+	 */
 	public Tramo getTramo() {
 		return tramo;
 	}
 
+	/**
+	 * @param tramo the tramo to set
+	 */
 	private void setTramo(Tramo tramo) {
 		if (tramo == null) {
 			throw new NullPointerException("ERROR: El tramo de una permanencia no puede ser nulo.");
@@ -31,12 +40,13 @@ public class PermanenciaPorTramo extends Permanencia {
 		this.tramo = tramo;
 	}
 
+	// GENERAMOS MÉTODO GETPUNTOS
 	@Override
 	public int getPuntos() {
 		return PUNTOS;
 	}
 
-	// hashCode y equals
+	// GENERAMOS HASCODE Y EQUALS
 	@Override
 	public int hashCode() {
 		return Objects.hash(getDia(), tramo);
@@ -54,7 +64,7 @@ public class PermanenciaPorTramo extends Permanencia {
 		return Objects.equals(getDia(), other.getDia()) && tramo == other.tramo;
 	}
 
-//	Método toString
+	// GENERAMOS MÉTODO TOSTRING
 	@Override
 	public String toString() {
 		return "día=" + getDia().format(FORMATO_DIA) + ", tramo=" + tramo;
@@ -83,3 +93,4 @@ public class PermanenciaPorTramo extends Permanencia {
 	}
 
 }
+

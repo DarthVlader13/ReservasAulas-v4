@@ -11,52 +11,54 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
 
 public interface IControlador {
 
-	//Método comenzar, que corre el método homónimo de la Vista
+	// MÉTODO COMENZAR
 	void comenzar();
 
-	//Método terminar, que simplemente corre el método exit y cierra la ejecución
+	// MÉTODO TERMINAR
 	void terminar();
 
-	//Los siguientes métodos simplemente corren los métodos homónimos del modelo, recogen los parámetros que se les pasa desde la Vista
-	//(que es desde donde estos métodos serán llamados) y le devuelve a la Vista los datos que retorna el modelo. También propaga las 
-	//excepciones para que sean tratadas más arriba
+	// MÉTODO INSERTARAULA
 	void insertarAula(Aula aula) throws OperationNotSupportedException;
 
+	// MÉTODO INSERTARPROFESOR
 	void insertarProfesor(Profesor profesor) throws OperationNotSupportedException;
 
+	// MÉTODO BORRARAULA
 	void borrarAula(Aula aula) throws OperationNotSupportedException;
 
+	// MÉTODO BORRARPROFESOR
 	void borrarProfesor(Profesor profesor) throws OperationNotSupportedException;
 
+	// MÉTODO BUSCARAULA
 	Aula buscarAula(Aula aula);
 
+	// MÉTODO BUSCARPROFESOR
 	Profesor buscarProfesor(Profesor profesor);
 
+	// MÉTODO REPRESENTARAULAS LIST
 	List<String> representarAulas();
 
+	// MÉTODO REPRESENTARPROFESORES LIST
 	List<String> representarProfesores();
 
+	// MÉTODO REPRESENTARRESERVAS LIST
 	List<String> representarReservas();
-	
-	
-	List<Profesor> getProfesores();
-	
-	List<Aula> getAulas();
-	
-	List<Reserva> getReservas();
-	
-	
 
+	// MÉTODO REALIZARRESERVAS
 	void realizarReserva(Reserva reserva) throws OperationNotSupportedException;
 
+	// MÉTODO ANULARRESERVAS
 	void anularReserva(Reserva reserva) throws OperationNotSupportedException;
 
-	List<Reserva> getReservasAula(Aula aula);
-
+	// MÉTODO GETRESERVASPROFESOR LIST
 	List<Reserva> getReservasProfesor(Profesor profesor);
 
+	// MÉTODO GETRESERVASAULA LIST
+	List<Reserva> getReservasAula(Aula aula);
+
+	// MÉTODO GETRESERVASPERMANENCIA LIST
 	List<Reserva> getReservasPermanencia(Permanencia permanencia);
 
+	// MÉTODO CONSULTARDISPONIBILIDAD
 	boolean consultarDisponibilidad(Aula aula, Permanencia permanencia);
-
 }

@@ -1,7 +1,7 @@
 package org.iesalandalus.programacion.reservasaulas.mvc.vista.texto;
 
 public enum Opcion {
-//Lista de opciones
+	//OPCIONES A MOSTRAR
 	INSERTAR_AULA("Insertar aula") {
 		public void ejecutar() {
 			vista.insertarAula();

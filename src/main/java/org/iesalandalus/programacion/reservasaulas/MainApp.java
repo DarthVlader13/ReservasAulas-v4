@@ -10,9 +10,7 @@ import org.iesalandalus.programacion.reservasaulas.mvc.vista.FactoriaVista;
 import org.iesalandalus.programacion.reservasaulas.mvc.vista.IVista;
 
 public class MainApp {
-	// Método main, que crea el Modelo, la Vista, corre el constructor del
-	// Controlador pasando como parámetros el Modelo y Vista y luego corre
-	// el método comenzar del controlador
+
 	public static void main(String[] args) {
 		IModelo modelo = new Modelo(procesarArgumentosModelo(args));
 		IVista vista = procesarArgumentosVista(args);

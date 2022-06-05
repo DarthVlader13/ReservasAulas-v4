@@ -11,64 +11,70 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
 
 public interface IModelo {
 
+	// MÉTODO GETAULAS LIST
 	List<Aula> getAulas();
 
+	// MÉTODO GETNUMAULAS
 	int getNumAulas();
 
-	//Método representarAulas, que obtiene un array String de las aulas. Este método comprobará si dicho array solo contiene nulos y, de ser
-	//así, devolverá nulo para que dicho resultado se trate más arriba
+	// MÉTODO REPRESENTARAULAS LIST
 	List<String> representarAulas();
 
-	//Método buscarAula, que busca un aula dada como parámetro y comprueba si es nula. Si lo es, significa que el aula no se encontró y 
-	//retorna nulo y si no, retorna una copia del aula encontrada.
+	// MÉTODO BUSCARAULA
 	Aula buscarAula(Aula aula);
 
-	//Método que inserta un aula pasada como parámetro propagando excepciones
+	// MÉTODO INSERTARAULA 
 	void insertarAula(Aula aula) throws OperationNotSupportedException;
 
-	//Método que borra un aula pasada como parámetro propagando excepciones
+	// MÉTODO BORRARAULA
 	void borrarAula(Aula aula) throws OperationNotSupportedException;
 
+	// MÉTODO GETPROFESORES LIST
 	List<Profesor> getProfesores();
 
+	// MÉTODO GETNUMPROFESORES
 	int getNumProfesores();
 
-	//Método que hace el equivalente de representarAulas pero con profesores
+	// MÉTODO REPRESENTARPROFESORES
 	List<String> representarProfesores();
 
-	//Método que hace el equivalente de buscarAulas pero con profesores
+	// MÉTODO BORRARPROFESOR
 	Profesor buscarProfesor(Profesor profesor);
 
-	//Método que inserta un profesor pasado como parámetro propagando excepciones
+	// MÉTODO INSERTARPROFESOR
 	void insertarProfesor(Profesor profesor) throws OperationNotSupportedException;
 
-	//Método que borra un prpfesor pasado como parámetro propagando excepciones
+	// MÉTODO BORRARPROFESOR
 	void borrarProfesor(Profesor profesor) throws OperationNotSupportedException;
 
+	// MÉTODO GETRESERVAS LIST
 	List<Reserva> getReservas();
 
+	// MÉTODO GETNUMRESERVAS
 	int getNumReservas();
 
-	//Método que hace el equivalente de representarAulas pero con reservas
+	// MÉTODO REPRESENTARRESERVAS
 	List<String> representarReservas();
 
-	//Método que hace el equivalente de buscarAulas pero con reservas
+	// MÉTODO BUSCARRESERVA
 	Reserva buscarReserva(Reserva reserva);
 
+	// MÉTODO REALIZARRESERVA
 	void realizarReserva(Reserva reserva) throws OperationNotSupportedException;
 
+	// MÉTODO ANULARRESERVA
 	void anularReserva(Reserva reserva) throws OperationNotSupportedException;
 
-	//Método que hace el equivalente de representarAulas pero con un array de tipo Reserva
-	List<Reserva> getReservasAula(Aula aula);
-
-	//Método que hace el equivalente de representarAulas pero con un array de tipo Reserva y para profesores
+	// MÉTODO GETRESERVASPROFESOR LIST
 	List<Reserva> getReservasProfesor(Profesor profesor);
 
-	//Método que hace el equivalente de representarAulas pero con un array de tipo Reserva y para permamencias
+	// MÉTODO GERRESERVASAULA LIST
+	List<Reserva> getReservasAula(Aula aula);
+
+	// MÉTODO GETRESERVASPERMANENCIA LIST
 	List<Reserva> getReservasPermanencia(Permanencia permanencia);
 
-	//Método que correrá el método homónimo de Reservas y devolverá true si está disponible y false de lo contrario
+	// MÉTODO CONSULTARDISPONIBILIDAD
 	boolean consultarDisponibilidad(Aula aula, Permanencia permanencia);
 	
 	public void comenzar();

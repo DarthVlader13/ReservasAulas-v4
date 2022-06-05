@@ -1,6 +1,6 @@
 package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.memoria;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -12,28 +12,17 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.IProfesores;
 
 public class Profesores implements IProfesores {
+
+	// DECLARACIÓN DE ATRIBUTOS
 	private List<Profesor> coleccionProfesores;
 
-//Este getter devuelve una copia profunda mediante un método específico para ello, para evitar aliasing
+	// CREAMOS MÉTODO GETPROFESORES
 	@Override
 	public List<Profesor> getProfesores() {
 		return copiaProfundaProfesores(coleccionProfesores);
 	}
 
-//Constructor genérico
-	public Profesores() {
-		coleccionProfesores = new ArrayList<>();
-	}
-
-//Constructor copia validando null
-	public Profesores(IProfesores p) {
-		if (p == null) {
-			throw new NullPointerException("ERROR: No se pueden copiar profesores nulos.");
-		}
-		setProfesores(p);
-	}
-
-//Méto setProfesores, que recibe un objeto tipo Profesores, lo convierte en un arraylist mediante getProfesores y lo asigna a coleccionProfesores
+	// CREAMOS MÉTODO SETPROFESORES
 	private void setProfesores(IProfesores profesores) {
 		if (profesores == null) {
 			throw new NullPointerException("ERROR: No se puede copiar un profesor nulo.");
@@ -41,13 +30,32 @@ public class Profesores implements IProfesores {
 		this.coleccionProfesores = profesores.getProfesores();
 	}
 
-//	Método que crea una copia profunda del arraylist y lo devuelve para así evitar aliasing.
+	// CONSTRUCTOR VACIO
+	public Profesores() {
+		coleccionProfesores = new ArrayList<>();
+	}
+
+	// CREAMOS CONSTRUCTOR COPIA
+	public Profesores(IProfesores p) {
+		if (p == null) {
+			throw new NullPointerException("ERROR: No se pueden copiar profesores nulos.");
+		}
+		setProfesores(p);
+	}
+
+	// CREAMOS MÉTODO GETNUMPROFESORES
+	@Override
+	public int getNumProfesores() {
+		return coleccionProfesores.size();
+	}
+
+	// CREAMOS MÉTODO COPIAPROFUNDAPROFESORES
 	private List<Profesor> copiaProfundaProfesores(List<Profesor> listaProfesores) {
 		List<Profesor> copiaProfunda = new ArrayList<>();
-		
-		Comparator<Profesor> comparador=Comparator.comparing(Profesor::getCorreo);
+
+		Comparator<Profesor> comparador = Comparator.comparing(Profesor::getCorreo);
 		Collections.sort(coleccionProfesores, comparador);
-		
+
 		Iterator<Profesor> iterador = listaProfesores.iterator();
 		while (iterador.hasNext()) {
 			copiaProfunda.add(new Profesor(iterador.next()));
@@ -55,14 +63,7 @@ public class Profesores implements IProfesores {
 		return copiaProfunda;
 	}
 
-//Método getNumProfesores que nos devuelve el tamaño de coleccionProfesores
-	@Override
-	public int getNumProfesores() {
-		return coleccionProfesores.size();
-	}
-
-//Método insertar, que a un Profesor dado comprueba si es nullo y si no, recorre coleccionProfesores buscando alguna coincidencia. De haberla, nos
-//retorna una excepción avisándonos del profesor duplicado y si no, inserta una copia del Profesor pasado como parámetro
+	// CREAMOS MÉTODO INSERTAR
 	@Override
 	public void insertar(Profesor profesor) throws OperationNotSupportedException {
 		if (profesor == null) {
@@ -74,9 +75,7 @@ public class Profesores implements IProfesores {
 		}
 	}
 
-//Método buscar, que crea un Profesor y ante un Profesor dado como parámetro busca su índice con .indexOf. Si no existe, nos devolverá -1 y
-//devolvemos nulo. Si devuelve otro número, será el índice de la coincidencia así que guardamos una copia de ese objeto mediante el índice
-//obtenido y lo devolvemos
+	// CREAMOS MÉTODO BUSCAR
 	@Override
 	public Profesor buscar(Profesor profesor) {
 		if (profesor == null) {
@@ -92,7 +91,7 @@ public class Profesores implements IProfesores {
 		return profesorEncontrado;
 	}
 
-//Método borrar, que comprueba nulo, comprueba que el profesor exista mediante buscar y después borra el profesor accediendo a su índice
+	// CREAMOS MÉTODO BORRAR
 	@Override
 	public void borrar(Profesor profesor) throws OperationNotSupportedException {
 		if (profesor == null) {
@@ -104,7 +103,7 @@ public class Profesores implements IProfesores {
 		}
 	}
 
-//Creamos el método representar que creará un ArrayList de tipo String en el que guardaremos los .toString de los profesores para su posterior uso.
+	// CREAMOS MÉTODO REPRESENTAR
 	@Override
 	public List<String> representar() {
 		List<String> representacion = new ArrayList<>();
@@ -114,16 +113,15 @@ public class Profesores implements IProfesores {
 		}
 		return representacion;
 	}
-	
+
 	@Override
 	public void comenzar() {
-		
+
 	}
-	
+
 	@Override
 	public void terminar() {
-		
+
 	}
-	
-	
 }
+

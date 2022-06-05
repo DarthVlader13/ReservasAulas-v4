@@ -124,20 +124,3 @@ public class Reserva implements Serializable {
 		return profesor.toString() + ", " + aula.toString() + ", " + permanencia.toString() + ", " + String.format("puntos=%.1f",getPuntos());
 	}
 }
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
